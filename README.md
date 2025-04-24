@@ -22,7 +22,7 @@ This repository contains a Windows batch file menu system to launch and manage s
 
 - **Windows**
 - **Python** installed and added to PATH
-- Run this to install required Python modules:
+- Run this to install required Python modules (Only if you use Make Model URL With Name.bat):
   ```bash
   pip install requests beautifulsoup4
   ```
