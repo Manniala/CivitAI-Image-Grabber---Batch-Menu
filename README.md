@@ -65,3 +65,28 @@ Feel free to fork, improve, and suggest changes — especially new script ideas 
 
 
 
+
+# General Usage
+
+The way it works is pretty simple:
+
+You place artist names or model IDs into their respective `.txt` files — for example, `Download_Artist.txt` or `Download_Model_ID.txt`.
+
+Then, when you launch the menu and choose an option like `2. Download Artist`, it will go through the list in `Download_Artist.txt` and download content from each artist automatically.
+
+This setup is great for tracking multiple artists or models — you don’t have to remember who you were following or type anything manually each time. Just run the menu and press a number. It will only download new content (as long as you don’t delete the `tracking_database.sqlite`, which is what keeps track of what has already been downloaded).
+
+What makes the menu flexible is that it automatically includes all `.bat` files from the `Scripts/` folder. That means you can create multiple download scripts with different `.txt` files for organizing or separating download types — e.g., one for NSFW content, one for SFW, or one specifically for LoRAs. You just copy an existing `.bat` file and change line 9 to point to your new `.txt` list.
+
+
+💬 Answer to a Common Question
+
+> “Is the intention of the artist.txt and artist.bat to save you from having to type the name every time? Or will it detect the previous process has completed and launch grabber again with the next username?”
+
+Great question!
+Yes — the main goal of the `.txt` and `.bat` files is to save you from having to type names or IDs every time. You just edit the list once, and from then on, it’ll pull from that file whenever you launch the script.
+
+It doesn’t auto-run one name after another in a loop unless it's built into the script (some do support going through the full list). So think of it as a shortcut launcher for a batch of artists/models — no typing needed, and it remembers what’s been downloaded so you’re not re-fetching old content.
+
+
+
