@@ -87,4 +87,44 @@ Great question!
 Yes — the main goal of the `.txt` and `.bat` files is to save you from having to type names or IDs every time. You just edit the list once, and from then on, it’ll pull from that file whenever you launch the script.
 
 
+# Here is an example or a Artist run.
+```
+Identifier: sentinelart (Type: username)
+  Status: Completed
+  API Items: 60
+  Downloaded: 3
+  Skipped/Failed: 57
+  No Metadata: 2
+----------
+Identifier: tk42356425 (Type: username)
+  Status: Completed
+  API Items: 800
+  Downloaded: 0
+  Skipped/Failed: 800
+  No Metadata: 0
+----------
+Identifier: yoepro (Type: username)
+  Status: Completed
+  API Items: 213
+  Downloaded: 0
+  Skipped/Failed: 213
+  No Metadata: 0
+----------
+
+NOTE: The following identifiers resulted in zero models/images being processed:
+- username: xxxxxxxxxx (Status: Failed (Not Found) (Reason: User not found (API Error)))
+---------------------------------
+
+2025-04-25 02:05:59,537 - INFO - Run Stats Aggregated: Success=44, Skipped=36832, NoMeta=5, API Items=36876  
+2025-04-25 02:05:59,537 - WARNING - Some identifiers failed processing or completed with errors:
+
+Warning: Some identifiers had issues:  
+- username: xxxxxxxxxx: Status=Failed (Not Found), Reason=User not found (API Error)  
+- username: xxxxxxxxxx: Failed (Not Found) (Reason: User not found (API Error))
+
+2025-04-25 02:05:59,537 - INFO - --- Starting Run Finalization ---  
+2025-04-25 02:05:59,537 - INFO - Total run duration: 489.91 seconds  
+2025-04-25 02:05:59,537 - INFO - Run finished with errors.  
+2025-04-25 02:05:59,540 - INFO - Script finished.
+```
 
