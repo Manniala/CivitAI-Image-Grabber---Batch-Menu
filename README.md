@@ -86,7 +86,5 @@ What makes the menu flexible is that it automatically includes all `.bat` files 
 Great question!
 Yes — the main goal of the `.txt` and `.bat` files is to save you from having to type names or IDs every time. You just edit the list once, and from then on, it’ll pull from that file whenever you launch the script.
 
-It doesn’t auto-run one name after another in a loop unless it's built into the script (some do support going through the full list). So think of it as a shortcut launcher for a batch of artists/models — no typing needed, and it remembers what’s been downloaded so you’re not re-fetching old content.
-
 
 
