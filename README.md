@@ -57,7 +57,9 @@ This batch menu is intended to support tools developed by [Confuzu](https://gith
 Feel free to fork, improve, and suggest changes — especially new script ideas for the menu!
 
 
-📦 Installation
+## 📦 Installation
+
+📝 Note: If placing this inside the original CivitAI_Image_grabber repo, consider renaming this file to README-menu.md to avoid overwriting the main README.
 
 You can install the batch menu in two ways: manually or via pip.
 
