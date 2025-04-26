@@ -22,7 +22,7 @@ This repository contains a Windows batch file menu system to launch and manage s
 
 - **Windows**
 - **Python** installed and added to PATH
-- Run this to install required Python modules (Only if you use Make Model URL With Name.bat):
+- Run this to install required Python modules (Only if you use "Make Model URL With Name.bat"):
   ```bash
   pip install requests beautifulsoup4
   ```
@@ -35,12 +35,62 @@ This repository contains a Windows batch file menu system to launch and manage s
 3. Run `menu.bat` from the root folder to launch the dynamic menu.
 4. To remove unused menu items, just delete the corresponding `.bat` files from `Scripts`.
 
-## 🗂 Folder Structure
+## 📁 Final Folder Setup Suggestion (Example Layout)
+
+```
+CivitAI_Image_grabber/
+├── civit_image_downloader.py
+├── tagnames.py
+├── tracking_database.sqlite
+├── Scripts/
+│   ├── Download Artist.bat
+│   ├── ...
+│   └── wait_time.txt
+├── menu.bat
+├── README.md               <-- from original author
+├── README-menu.md          <-- your menu README, renamed to avoid conflict
+```
+
+## 🤝 Contribution
+
+This batch menu is intended to support tools developed by [Confuzu](https://github.com/Confuzu)
+Feel free to fork, improve, and suggest changes — especially new script ideas for the menu!
+
+
+📦 Installation
+
+You can install the batch menu in two ways: manually or via pip.
+
+🔧 Option 1: Manual Download
+
+1. Download or clone this repo:
+    git clone https://github.com/YourUsername/CivitAI-Image-Grabber-Menu.git
+   Or click Code > Download ZIP on GitHub and extract it.
+
+2. Copy the contents into the same folder as the original `civit_image_downloader.py`:
+   (https://github.com/Confuzu/CivitAI_Image_grabber)
+
+3. Open the folder and run `menu.bat`.
+
+🐍 Option 2: Install via pip (for easier updating)
+
+> This will install the menu system as a Python package.
+
+1. Open a terminal (Command Prompt or PowerShell).
+2. Run:
+    pip install git+https://github.com/YourUsername/CivitAI-Image-Grabber-Menu.git
+3. Navigate to your project folder where `civit_image_downloader.py` is located.
+4. Run:
+    menu.bat
+
+📁 Folder Setup
+
+Make sure the structure looks like this:
 
 ```
 CivitAI_Image_grabber/
 │
-├── menu.bat                          # Main menu launcher
+├── menu.bat                          # Main menu
 ├── Scripts/                          # Place additional .bat and .py tools here
 │   ├── Civit Image Downloader.bat    # Starts civit_image_downloader.py
 │   ├── Download Artist.bat           # Downloads images by artist (uses Download_Artist.txt)
@@ -53,20 +103,12 @@ CivitAI_Image_grabber/
 │   ├── Make Model URL With Name.bat  # Starts fetch_model_titles.py
 │   ├── Make URL For Artist's.bat     # Generates download URLs for artists
 │   ├── Make URL For Model's.bat      # Generates download URLs for models
-├── image_downloads/                  # Where downloaded content is stored
-└── README.md                         # Project overview and usage instructions
+│   ├── Set Wait Time.bat             # Sets the Wait Time
+│   ├── wait_time.txt                 # Wait Time .txt file
+└── README-Menu.md                    # Project overview and usage instructions
 ```
 
-## 🤝 Contribution
-
-This batch menu is intended to support tools developed by [Confuzu](https://github.com/Confuzu)
-Feel free to fork, improve, and suggest changes — especially new script ideas for the menu!
-
-
-
-
-
-# General Usage
+## General Usage
 
 The way it works is pretty simple:
 
@@ -87,44 +129,15 @@ Great question!
 Yes — the main goal of the `.txt` and `.bat` files is to save you from having to type names or IDs every time. You just edit the list once, and from then on, it’ll pull from that file whenever you launch the script.
 
 
-# Here is an example or a Artist run.
-```
-Identifier: sentinelart (Type: username)
-  Status: Completed
-  API Items: 60
-  Downloaded: 3
-  Skipped/Failed: 57
-  No Metadata: 2
-----------
-Identifier: tk42356425 (Type: username)
-  Status: Completed
-  API Items: 800
-  Downloaded: 0
-  Skipped/Failed: 800
-  No Metadata: 0
-----------
-Identifier: yoepro (Type: username)
-  Status: Completed
-  API Items: 213
-  Downloaded: 0
-  Skipped/Failed: 213
-  No Metadata: 0
-----------
+## Added - 26 April 2025
+- Added 'Set Wait Time.bat' to configure wait time between downloads
+- Created 'wait_time.txt' to store delay value (in seconds)
+- Updated 'Download Artist.bat' and 'Download Model.bat' to:
+    - Read one name per line from their respective .txt files
+    - Download each artist/model individually with a timed delay
+    - Show the name of the next artist/model before continuing
+- Reduced API spam risk by spacing out download requests
+- Displayed current wait time in the menu using ANSI color
+- Enhanced clarity and safety for both user experience and API usage
 
-NOTE: The following identifiers resulted in zero models/images being processed:
-- username: xxxxxxxxxx (Status: Failed (Not Found) (Reason: User not found (API Error)))
----------------------------------
-
-2025-04-25 02:05:59,537 - INFO - Run Stats Aggregated: Success=44, Skipped=36832, NoMeta=5, API Items=36876  
-2025-04-25 02:05:59,537 - WARNING - Some identifiers failed processing or completed with errors:
-
-Warning: Some identifiers had issues:  
-- username: xxxxxxxxxx: Status=Failed (Not Found), Reason=User not found (API Error)  
-- username: xxxxxxxxxx: Failed (Not Found) (Reason: User not found (API Error))
-
-2025-04-25 02:05:59,537 - INFO - --- Starting Run Finalization ---  
-2025-04-25 02:05:59,537 - INFO - Total run duration: 489.91 seconds  
-2025-04-25 02:05:59,537 - INFO - Run finished with errors.  
-2025-04-25 02:05:59,540 - INFO - Script finished.
-```
-
+- Renamed README.md to README-Menu.md, to voids confusion
