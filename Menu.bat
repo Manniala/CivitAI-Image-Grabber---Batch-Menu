@@ -3,7 +3,7 @@ setlocal EnableDelayedExpansion
 
 :Menu
 
-title CivitAI Download Launcher Menu
+title CivitAI Download Launcher Menu v1.2
 
 REM Define color codes
 set "reset=[0m"
@@ -29,11 +29,11 @@ if exist "Scripts\wait_time.txt" (
 )
 
 echo.
-echo %cyan_fg_strong% Current Wait Time is set to: %green_fg_strong%%WAIT_TIME%%cyan_fg_strong%seconds%reset%
+echo %cyan_fg_strong%Current Wait Time is set to: %green_fg_strong%%WAIT_TIME%%cyan_fg_strong%seconds%reset%
 echo.
 
 REM Display title with color
-echo %blue_fg_strong% Select a menu item to run %reset%
+echo %blue_fg_strong%Select a menu item to run %reset%
 echo %cyan_fg_strong%_____________________________________________________%reset%
 echo.
 

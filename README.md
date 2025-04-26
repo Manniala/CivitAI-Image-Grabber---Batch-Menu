@@ -1,4 +1,4 @@
-# 🖼️ CivitAI Image Grabber - Batch Menu
+# 🖼️ CivitAI Image Grabber - Batch Menu v1.2
 
 ![Platform](https://img.shields.io/badge/platform-Windows-blue)
 ![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)
@@ -31,25 +31,9 @@ This repository contains a Windows batch file menu system to launch and manage s
 ## 🚀 Usage
 
 1. Clone or download this repo.
-2. Place this inside the  [CivitAI_Image_grabber](https://github.com/Confuzu/CivitAI_Image_grabber) scripts folder.
+2. Place this inside the rood of [CivitAI_Image_grabber](https://github.com/Confuzu/CivitAI_Image_grabber) folder.
 3. Run `menu.bat` from the root folder to launch the dynamic menu.
 4. To remove unused menu items, just delete the corresponding `.bat` files from `Scripts`.
-
-## 📁 Final Folder Setup Suggestion (Example Layout)
-
-```
-CivitAI_Image_grabber/
-├── civit_image_downloader.py
-├── tagnames.py
-├── tracking_database.sqlite
-├── Scripts/
-│   ├── Download Artist.bat
-│   ├── ...
-│   └── wait_time.txt
-├── menu.bat
-├── README.md               <-- from original author
-├── README-menu.md          <-- your menu README, renamed to avoid conflict
-```
 
 ## 🤝 Contribution
 
@@ -66,7 +50,7 @@ You can install the batch menu in two ways: manually or via pip.
 🔧 Option 1: Manual Download
 
 1. Download or clone this repo:
-    git clone https://github.com/YourUsername/CivitAI-Image-Grabber-Menu.git
+    git clone https://github.com/Manniala/CivitAI-Image-Grabber---Batch-Menu
    Or click Code > Download ZIP on GitHub and extract it.
 
 2. Copy the contents into the same folder as the original `civit_image_downloader.py`:
@@ -91,23 +75,30 @@ Make sure the structure looks like this:
 
 ```
 CivitAI_Image_grabber/
-│
-├── menu.bat                          # Main menu
-├── Scripts/                          # Place additional .bat and .py tools here
-│   ├── Civit Image Downloader.bat    # Starts civit_image_downloader.py
-│   ├── Download Artist.bat           # Downloads images by artist (uses Download_Artist.txt)
-│   ├── Download Model.bat            # Downloads images by model ID (uses Download_Model_ID.txt)
-│   ├── Download_Artist.txt           # Example artist URLs
-│   ├── Download_Model_ID.txt         # Example model IDs
-│   ├── Edit Artist's.bat             # Opens Download_Artist.txt for editing
-│   ├── Edit Model's.bat              # Opens Download_Model_ID.txt for editing
-│   ├── fetch_model_titles.py         # Converts model IDs to full model names
-│   ├── Make Model URL With Name.bat  # Starts fetch_model_titles.py
-│   ├── Make URL For Artist's.bat     # Generates download URLs for artists
-│   ├── Make URL For Model's.bat      # Generates download URLs for models
-│   ├── Set Wait Time.bat             # Sets the Wait Time
-│   ├── wait_time.txt                 # Wait Time .txt file
-└── README.md                         # Project overview and usage instructions
+│  └── Scripts/                            <-- Place additional .bat and .py tools here
+│      ├── Civit Image Downloader.bat      <-- Starts civit_image_downloader.py
+│      ├── Download Artist.bat             <-- Downloads images by artist
+│      ├── Download Model.bat              <-- Downloads images by model ID
+│      ├── Edit Artist's.bat               <-- Opens Edit Options for Artist's
+│      ├── Edit Model's.bat                <-- Opens Edit Options for Model's
+│      ├── Fetch_model_titles.py
+│      ├── Make Model Url With Name.bat    <-- Starts fetch_model_titles.py
+│      ├── Make URL For Artist's.bat       <-- Generates download URLs for artists
+│      ├── Make URL For Model's.bat        <-- Generates download URLs for models
+│      ├── Set Wait Time.bat               <-- Sets the Wait Time
+│      ├── Wait_time.txt                   <-- Wait Time .txt file
+│      ├──── Artist/
+│      │     ├── Portrait.txt              <-- Empty .txt file used as Example in Menu
+│      │     ├── Landscape.txt             <-- (Edit or Delete if not needed)
+│      │     └── NSFW.txt
+│      └──── Model/
+│            ├── Character.txt
+│            ├── Checkpoint.txt
+│            └── Vehicles.txt
+├── civit_image_downloader.py              <-- From https://github.com/Confuzu/CivitAI_Image_grabber
+├── Menu.bat
+├── README.md                              <-- Project overview and usage instructions
+└── tagnames.py                            <-- From https://github.com/Confuzu/CivitAI_Image_grabber
 ```
 
 ## General Usage
@@ -141,3 +132,55 @@ Yes — the main goal of the `.txt` and `.bat` files is to save you from having 
 - Reduced API spam risk by spacing out download requests
 - Displayed current wait time in the menu using ANSI color
 - Enhanced clarity and safety for both user experience and API usage
+
+## Edit/Added - 26 April 2025 - Changed to v1.2
+
+Update Summary:
+
+- New folder structure:  
+  - Scripts\\Artist\\ for artist `.txt` lists  
+  - Scripts\\Model\\ for model `.txt` lists
+
+- Download Artist.bat and Download Model.bat updated:
+  - Now search inside Scripts\\Artist\\ and Scripts\\Model\\ respectively.
+  - Automatically list all available `.txt` files (without showing `.txt` extension).
+  - User can select which artist or model list to run.
+
+- Edit Artist's.bat and Edit Model's.bat updated:
+  - Allow editing any `.txt` file from Scripts\\Artist\\ or Scripts\\Model\\.
+  - Show a numbered menu for easier selection.
+  - Safe range-checking to prevent invalid selections or errors.
+
+- Improved error handling across .bat files:
+  - If no `.txt` files are found, user is notified cleanly.
+  - If an invalid choice is made, the script exits safely with a message.
+
+- Minor fixes:
+  - Corrected a typo: "Downloading fromm" → "Downloading from".
+  - Standardized ANSI color usage (optional color improvements).
+
+Folder structure now:
+
+```
+Scripts/
+├── Artist/
+│   ├── Portrait.Artist.txt
+│   ├── Landscape.Artist.txt
+│   └── NSFW.Artist.txt
+├── Model/
+│   ├── Character.Model.txt
+│   └── Vehicles.Model.txt
+Civit Image Downloader.bat
+├── Download Artist.bat
+├── Download Model.bat
+├── Edit Artist's.bat
+├── Edit Model's.bat
+├── Fetch_model_titles.py
+├── Make Model Url With Name.bat
+├── Make URL For Artist's.bat
+├── Make URL For Model's.bat
+├── Set Wait Time.bat
+└── Wait_time.txt
+```
+
+✨ This update makes it easier to manage large sets of artists or models by keeping them organized into separate lists!
