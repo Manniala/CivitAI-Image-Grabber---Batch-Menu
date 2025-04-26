@@ -1,16 +1,23 @@
 @echo off
 setlocal enabledelayedexpansion
 
-REM Change to parent directory of the current script
-cd /d "%~dp0.."
+REM Read wait time from Scripts\wait_time.txt
+set /p WAIT_SECONDS=<"%~dp0wait_time.txt"
 
-REM Read the contents of Download_Model_ID.txt into a variable
-set "model_ids="
-for /f "usebackq delims=" %%A in ("Scripts\Download_Model_ID.txt") do (
+REM Loop through each model in Download_model_ID.txt (one per line)
+for /f "usebackq tokens=* delims=" %%A in ("%~dp0Download_Model_ID.txt") do (
     set "model_ids=%%A"
+    echo ---------------------------------
+    echo %yellow_fg_strong%Downloading from: %green_fg_strong%!model_ids!%reset%
+    echo ---------------------------------
+    python "%~dp0..\civit_image_downloader.py" --mode 2 --model_id "!model_ids!" --quality 1 --redownload 2
+    echo.
+    echo %yellow_fg_strong%All download complete for %green_fg_strong%!model_ids!%reset%
+    echo.
+    echo %yellow_fg_strong%Waiting %red_fg_strong%!WAIT_SECONDS!%yellow_fg_strong%seconds before next model...%reset%
+    timeout /t !WAIT_SECONDS! /nobreak >nul
 )
 
-REM Run the Python script
-python civit_image_downloader.py --mode 2 --model_id "!model_ids!" --quality 1 --redownload 2
-
+echo.
+echo All downloads complete...
 pause
