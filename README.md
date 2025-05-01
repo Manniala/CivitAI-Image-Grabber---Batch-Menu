@@ -1,4 +1,4 @@
-# 🖼️ CivitAI Image Grabber - Batch Menu v1.2
+# 🖼️ CivitAI Image Grabber - Batch Menu v1.21
 
 ![Platform](https://img.shields.io/badge/platform-Windows-blue)
 ![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)
@@ -74,8 +74,12 @@ You can install the batch menu in two ways: manually or via pip.
 Make sure the structure looks like this:
 
 ```
-CivitAI_Image_grabber/
-│  └── Scripts/                            <-- Place additional .bat and .py tools here
+CivitAI_Image_grabber\
+├───── backup\
+│      └── YYYY-MM-DD_tracking_database.sqlite
+├───── Scripts\                            <-- Place additional .bat and .py tools here
+│      ├── Backup (Toggle).bat             <-- Toggle Backup mode on and off
+│      ├── backup.cfg
 │      ├── Civit Image Downloader.bat      <-- Starts civit_image_downloader.py
 │      ├── Download Artist.bat             <-- Downloads images by artist
 │      ├── Download Model.bat              <-- Downloads images by model ID
@@ -87,11 +91,11 @@ CivitAI_Image_grabber/
 │      ├── Make URL For Model's.bat        <-- Generates download URLs for models
 │      ├── Set Wait Time.bat               <-- Sets the Wait Time
 │      ├── Wait_time.txt                   <-- Wait Time .txt file
-│      ├──── Artist/
+│      ├──── Artist\
 │      │     ├── Portrait.txt              <-- Empty .txt file used as Example in Menu
 │      │     ├── Landscape.txt             <-- (Edit or Delete if not needed)
 │      │     └── NSFW.txt
-│      └──── Model/
+│      └──── Model\
 │            ├── Character.txt
 │            ├── Checkpoint.txt
 │            └── Vehicles.txt
@@ -184,3 +188,18 @@ Civit Image Downloader.bat
 ```
 
 ✨ This update makes it easier to manage large sets of artists or models by keeping them organized into separate lists!
+
+
+
+#" Changelog - 1 May 2025
+
+### Added
+- **Backup function and State Indicator**: `menu.bat` now displays the current backup state for `tracking_database.sqlite` (Enabled or Disabled).  
+  - Backup copies are saved as `Backup\YYYY-MM-DD_tracking_database.sqlite`.
+  - State can be toggled using the new **Toggle Backup** option in the menu.
+
+### Improved
+- **Download Timestamp Display**: The `Download Artist` and `Download Model` options now show the last run date and time in the format:  
+  - `Model 01-05-2025 3:42:27`
+- If the option has **never been run**, it will display:  
+  - `Model Never run` — with **"Never run"** shown in **red** text for clear visibility.
